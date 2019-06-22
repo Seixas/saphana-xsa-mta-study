@@ -2,7 +2,7 @@ ID: hanacampos
 _schema-version: '2.1'
 version: 0.0.1
 modules:
-  - name: hanacampos-db
+  - name: db
     type: hdb
     path: db
     parameters:
@@ -10,7 +10,7 @@ modules:
       disk-quota: 256M
     requires:
       - name: hanacampos-hdi-container
-  - name: hanacampos-srv
+  - name: srv
     type: nodejs
     path: srv
     parameters:
@@ -22,8 +22,17 @@ modules:
           url: '${default-url}'
     requires:
       - name: hanacampos-hdi-container
+  - name: web
+    type: html5
+    path: web
+    requires:
+      - name: hanacampos-uaa
 resources:
   - name: hanacampos-hdi-container
     properties:
       hdi-container-name: '${service-name}'
     type: com.sap.xs.hdi-container
+  - name: hanacampos-uaa
+    type: com.sap.xs.uaa-space
+    parameters:
+      path: ./xs-security.json

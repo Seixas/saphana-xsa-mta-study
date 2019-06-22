@@ -3,7 +3,7 @@
   "description": "Reference application built according to the application programming model for SAP Cloud Platform",
   "version": "1.0.0",
   "dependencies": {
-    "@sap/cds": "2.x"
+    "@sap/cds": "^2.10"
   },
   "devDependencies": {},
   "scripts": {
